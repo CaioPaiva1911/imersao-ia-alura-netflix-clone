@@ -1,0 +1,278 @@
+/* Reset e configurações base */
+/* Remove margens e paddings padrão de todos os elementos */
+* {
+    margin: 0;              /* Remove margem externa padrão */
+    padding: 0;             /* Remove preenchimento interno padrão */
+    box-sizing: border-box; /* Inclui borda e padding no cálculo da largura */
+}
+
+a {
+    text-decoration: none;  /* Remove sublinhado de links */
+    color: inherit;        /* Herda a cor do elemento pai */
+}
+
+/* Configurações do corpo da página */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Define a família da fonte */
+    background-color: #141414; /* Cor de fundo escura (preto Netflix) */
+    color: #fff;               /* Cor do texto (branco) */
+    min-height: 100vh;        /* Altura mínima igual à altura da viewport */
+    display: flex;            /* Usa flexbox para layout */
+    flex-direction: column;   /* Organiza elementos em coluna */
+    align-items: center;     /* Alinha itens ao centro horizontalmente */
+    justify-content: center;  /* Centraliza conteúdo verticalmente */
+}
+
+/* Logo Netflix - posicionado no canto superior */
+.logo {
+    position: absolute;      /* Posicionamento absoluto em relação ao body */
+    top: 20px;               /* Distância do topo da página */
+    left: 40px;              /* Distância da borda esquerda */
+    font-size: 2rem;         /* Tamanho da fonte (2x o tamanho base) */
+    font-weight: bold;       /* Peso da fonte (negrito) */
+    color: #E50914;          /* Cor do logo (vermelho Netflix) */
+    letter-spacing: 2px;    /* Espaçamento entre letras */
+}
+
+/* Container principal */
+main {
+    text-align: center;      /* Alinha texto ao centro */
+    width: 100%;             /* Largura total disponível */
+    max-width: 900px;        /* Largura máxima de 900px */
+    padding: 20px;           /* Preenchimento interno */
+}
+
+/* Título principal */
+header h1 {
+    font-size: 3.5rem;       /* Tamanho do título (3.5x o tamanho base) */
+    font-weight: 500;        /* Peso da fonte (semi-negrito) */
+    margin-bottom: 40px;    /* Margem inferior do título */
+    letter-spacing: 1px;     /* Espaçamento entre letras */
+}
+
+/* Botão de alternar tema (dark/light mode) */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: #fff;
+}
+
+.theme-toggle .icon-light {
+    display: none;
+}
+
+/* Light mode */
+body.light-mode {
+    background-color: #f5f5f5;
+    color: #141414;
+}
+
+body.light-mode .logo {
+    color: #E50914;
+}
+
+body.light-mode .theme-toggle {
+    border-color: #141414;
+    color: #141414;
+}
+
+body.light-mode .theme-toggle:hover {
+    background: #141414;
+}
+
+body.light-mode .theme-toggle .icon-dark {
+    display: none;
+}
+
+body.light-mode .theme-toggle .icon-light {
+    display: inline;
+}
+
+body.light-mode .profile img {
+    background-color: #ccc;
+}
+
+body.light-mode .profile p {
+    color: #555;
+}
+
+body.light-mode .profile:hover p {
+    color: #141414;
+}
+.profiles {
+    display: flex;           /* Usa flexbox para layout */
+    justify-content: center; /* Centraliza itens horizontalmente */
+    gap: 30px;               /* Espaço entre os itens */
+    flex-wrap: wrap;         /* Permite quebra de linha em telas menores */
+}
+
+/* Lista de perfis - remove marcadores padrão */
+.profiles-list {
+    list-style: none;       /* Remove marcadores da lista */
+    display: flex;           /* Usa flexbox para layout */
+    justify-content: center; /* Centraliza itens horizontalmente */
+    gap: 30px;               /* Espaço entre os itens */
+    flex-wrap: wrap;         /* Permite quebra de linha em telas menores */
+    padding: 0;              /* Remove padding padrão da lista */
+    margin: 0;               /* Remove margem padrão da lista */
+}
+
+/* Card de perfil - cada perfil individual */
+.profile {
+    display: flex;           /* Usa flexbox para layout */
+    flex-direction: column;  /* Organiza elementos em coluna */
+    align-items: center;     /* Alinha itens ao centro */
+    cursor: pointer;          /* Cursor de mão indicando clicável */
+    transition: transform 0.2s ease; /* Transição suave de 0.2s para transformação */
+}
+
+/* Efeito ao passar o mouse sobre o perfil */
+.profile:hover {
+    transform: scale(1.05); /* Aumenta escala em 5% */
+}
+
+/* Efeito na imagem ao passar o mouse sobre o perfil */
+.profile:hover img {
+    border-color: #fff;      /* Cor da borda (branco) */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); /* Sombra suave branca */
+}
+
+/* Imagem do perfil */
+.profile img {
+    width: 84px;             /* Largura da imagem */
+    height: 84px;            /* Altura da imagem */
+    border-radius: 4px;     /* Bordas arredondadas (4px) */
+    border: 2px solid transparent; /* Borda transparente inicialmente */
+    transition: all 0.2s ease; /* Transição suave de 0.2s para todas as propriedades */
+    object-fit: cover;       /* Ajusta imagem para cobrir o espaço sem distorção */
+    background-color: #333; /* Cor de fundo caso imagem não carregue */
+}
+
+/* Nome do perfil */
+.profile p {
+    margin-top: 12px;        /* Margem superior do texto */
+    font-size: 1.1rem;      /* Tamanho da fonte (1.1x o tamanho base) */
+    color: #aaa;             /* Cor do texto (cinza claro) */
+    transition: color 0.2s ease; /* Transição suave de 0.2s para cor */
+}
+
+/* Efeito no texto ao passar o mouse sobre o perfil */
+.profile:hover p {
+    color: #fff;             /* Cor do texto (branco) ao passar mouse */
+}
+
+/* Responsividade - ajustes para telas menores */
+
+/* Telas muito pequenas (até 400px) */
+@media (max-width: 400px) {
+    header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+    }
+    
+    .logo {
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.5rem;
+    }
+    
+    main {
+        padding: 15px;
+    }
+    
+    .profiles {
+        gap: 15px;
+    }
+    
+    .profile img {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .profile p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Smartphones (401px - 600px) */
+@media (min-width: 401px) and (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .logo {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .profiles {
+        gap: 20px;
+    }
+    
+    .profile img {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* Tablets (601px - 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    header h1 {
+        font-size: 2.8rem;
+    }
+    
+    .logo {
+        left: 30px;
+    }
+    
+    .profiles {
+        gap: 25px;
+    }
+    
+    .profile img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* Laptops e Desktops pequenos (1025px - 1200px) */
+@media (min-width: 1025px) and (max-width: 1200px) {
+    header h1 {
+        font-size: 3rem;
+    }
+    
+    main {
+        max-width: 800px;
+    }
+}
+
+/* Telas grandes (acima de 1200px) */
+@media (min-width: 1201px) {
+    header h1 {
+        font-size: 3.5rem;
+    }
+    
+    main {
+        max-width: 1000px;
+    }
+    
+    .profile img {
+        width: 90px;
+        height: 90px;
+    }
+}
