@@ -75,6 +75,27 @@
     </footer>
 
     <script type="module" src="js/main.js"></script>
-</body>
+    <script>
+        // Exibir perfil ativo na navbar
+        document.addEventListener('DOMContentLoaded', () => {
+            const perfilStorage = localStorage.getItem('perfilAtivo');
+            if (perfilStorage) {
+                const perfil = JSON.parse(perfilStorage);
+                
+                // Atualizar o link "Seu nome"
+                const kidsLink = document.querySelector('.kids-link');
+                if (kidsLink) {
+                    kidsLink.textContent = perfil.name;
+                }
+                
+                // Atualizar a imagem do perfil
+                const profileIcon = document.querySelector('.profile-icon');
+                if (profileIcon) {
+                    profileIcon.src = perfil.image;
+                    profileIcon.alt = 'Perfil ' + perfil.name;
+                }
+            }
+        });
+    </script>
 
 </html>
